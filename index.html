@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seb's Crescent City Bistro</title>
+  <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #0d0d0d;
+      color: #f8f8f8;
+      line-height: 1.5;
+    }
+    a { color: gold; text-decoration: none; }
+
+    /* Header */
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid gold;
+      position: relative;
+    }
+    .logo {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: gold;
+    }
+    header p.subtitle {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 5px 0;
+    }
+    header .contact {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+    header .order-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: gold;
+      color: #1a1a1a;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #111;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      margin: 5px 10px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    /* Sections */
+    section {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: gold;
+      border-bottom: 2px solid gold;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    /* Menu Items */
+    .menu-item {
+      margin-bottom: 20px;
+    }
+    .menu-item h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 1.2rem;
+      color: #f8f8f8;
+    }
+    .menu-item h3 .price {
+      font-size: 1rem;
+      color: #bbb;
+    }
+    .menu-item p {
+      margin: 5px 0 0;
+      color: #ccc;
+      font-size: 1rem;
+    }
+    img.entree-photo {
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border: 2px solid gold;
+      border-radius: 8px;
+    }
+
+    /* Square Photos */
+    img.square-photo {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      display: block;
+      border: 2px solid gold;
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #aaa;
+      border-top: 3px solid gold;
+    }
+
+    /* Chat Popup */
+    #chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: gold;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      font-size: 1.5rem;
+    }
+    #chat-window {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      max-width: 80%;
+      background: #1a1a1a;
+      border: 2px solid gold;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      color: #f8f8f8;
+    }
+    #chat-window header {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    #chat-window .messages {
+      height: 150px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    #chat-window input {
+      width: calc(100% - 40px);
+      padding: 5px;
+      background: #333;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 4px;
+    }
+    #chat-window button.send {
+      width: 30px;
+      background: gold;
+      border: none;
+      color: #1a1a1a;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav { flex-direction: column; }
+      header h1 { font-size: 1.5rem; }
+      .menu-item h3 { font-size: 1rem; }
+      section { padding: 20px 10px; }
+      img.square-photo { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/Sebs-Crescent-City-Bistro-Logo+_500x500.jpg" alt="Seb's Crescent City Bistro Logo" class="logo">
+  <h1>Seb's Crescent City Bistro</h1>
+  <p class="subtitle">Southern Fare, Jazz Flair, and Blues Beats</p>
+  <p class="contact">📞 (555) 123-4567</p>
+  <button class="order-btn" onclick="window.location='#order'">Order Online</button>
+</header>
+
+<nav>
+  <a href="#starters">Starters</a>
+  <a href="#mains">Mains</a>
+  <a href="#desserts">Desserts</a>
+  <a href="#cocktails">Cocktails</a>
+  <a href="#music">Jazz & Blues</a>
+</nav>
+
+<section id="starters">
+  <h2>Starters</h2>
+  <div class="menu-item">
+    <h3>Blue Note Bruschetta <span class="price">$12</span></h3>
+    <p>Toasted baguette, heirloom tomatoes, basil, and aged balsamic.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Southern Fried Oysters <span class="price">$15</span></h3>
+    <p>Cornmeal crusted oysters with remoulade sauce.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Creole Crab Cakes <span class="price">$14</span></h3>
+    <p>Jumbo lump crab, roasted red pepper aioli.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Midnight Gumbo <span class="price">$13</span></h3>
+    <p>New Orleans classic with shrimp, chicken, and andouille sausage.</p>
+  </div>
+</section>
+
+<section id="mains">
+  <h2>Main Courses</h2>
+
+  <div class="menu-item">
+    <h3>The Saxman's Ribeye <span class="price">$42</span></h3>
+    <p>16 oz dry-aged ribeye with truffle butter and garlic mashed potatoes.</p>
+    <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/The+Saxmans+Ribeye.jpg" alt="The Saxman's Ribeye" class="entree-photo">
+  </div>
+
+  <div class="menu-item">
+    <h3>Delta Blues Duck Breast <span class="price">$36</span></h3>
+    <p>Pan-seared duck breast, blackberry reduction, wild rice pilaf.</p>
+    <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/Delta+Blues+Duck+Breast.jpg" alt="Delta Blues Duck Breast" class="entree-photo">
+  </div>
+
+  <div class="menu-item">
+    <h3>Crescent City Shrimp & Grits <span class="price">$28</span></h3>
+    <p>Cajun shrimp, stone-ground grits, smoked cheddar.</p>
+    <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/Crescent+City+Shrimp+and+Grits.jpg" alt="Crescent City Shrimp and Grits" class="entree-photo">
+  </div>
+
+  <div class="menu-item">
+    <h3>The Bebop Blackened Salmon <span class="price">$30</span></h3>
+    <p>Blackened salmon filet, lemon butter sauce, asparagus spears.</p>
+    <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/The+Bebop+Blackened+Salmon.jpg" alt="The Bebop Blackened Salmon" class="entree-photo">
+  </div>
+
+  <div class="menu-item">
+    <h3>The Ella Étouffée <span class="price">$26</span></h3>
+    <p>Crawfish and shrimp étouffée over white rice.</p>
+  </div>
+</section>
+
+<section id="desserts">
+  <h2>Desserts</h2>
+  <div class="menu-item">
+    <h3>Sweet Georgia Brown Bread Pudding <span class="price">$9</span></h3>
+    <p>Bourbon caramel sauce, vanilla ice cream.</p>
+    <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/Sweet+Georgia+Brown+Bread+Pudding.jpg" alt="Sweet Georgia Brown Bread Pudding" class="entree-photo">
+  </div>
+
+  <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/All-Deserts_1080x1080.jpg" alt="All Desserts" class="square-photo">
+</section>
+
+<section id="cocktails">
+  <h2>Specialty Cocktails & Beverages</h2>
+  <div class="menu-item">
+    <h3>Satchmo's Old Fashioned <span class="price">$14</span></h3>
+    <p>Bourbon, bitters, sugar, orange peel.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Midnight Blues Martini <span class="price">$13</span></h3>
+    <p>Vodka, blue curaçao, lemon twist.</p>
+  </div>
+  <div class="menu-item">
+    <h3>Frenchmen Street Mule <span class="price">$12</span></h3>
+    <p>Vodka, ginger beer, fresh mint.</p>
+  </div>
+
+  <img src="https://f000.backblazeb2.com/file/EmbrFyr/Restaurant-Demo/Beverages-1080x1080.jpg" alt="Beverages" class="square-photo">
+</section>
+
+<section id="music">
+  <h2>Jazz & Blues Nights</h2>
+  <p>Join us every <strong>Friday</strong> and <strong>Saturday</strong> for live performances from New Orleans' finest jazz and blues artists! Dancing encouraged!</p>
+  <ul>
+    <li>🎷 The Bayou Brass Band</li>
+    <li>🎤 Lady Delta & the Blue Notes</li>
+    <li>🎸 The Bourbon Street Swingers</li>
+    <li>🎺 Big Easy Rhythm Collective</li>
+  </ul>
+  <p>Check our <strong>calendar</strong> for special events and themed nights!</p>
+</section>
+
+<footer>
+  &copy; 2025 Seb's Crescent City Bistro | All Rights Reserved
+</footer>
+
+<!-- Chat Support -->
+<button id="chat-button" onclick="toggleChat()">💬</button>
+<div id="chat-window">
+  <header>Chat Support</header>
+  <div class="messages"><em>Hi there! How can we help you today?</em></div>
+  <div>
+    <input type="text" id="chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMessage()">
+    <button class="send" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+  function toggleChat() {
+    const win = document.getElementById('chat-window');
+    win.style.display = win.style.display === 'block' ? 'none' : 'block';
+  }
+  function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const container = document.querySelector('#chat-window .messages');
+    container.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+    input.value = '';
+    container.scrollTop = container.scrollHeight;
+    // Simulated bot response
+    setTimeout(() => {
+      container.innerHTML += `<div><strong>Support:</strong> Thanks for your message! We'll get back to you shortly.</div>`;
+      container.scrollTop = container.scrollHeight;
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
